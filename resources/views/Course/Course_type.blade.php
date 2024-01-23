@@ -44,17 +44,17 @@
                         </thead>
                         <tbody>
                        
-                               
+                        @foreach($courseTypes as $course)
                                     <tr>
-                                        <td>1</td>
-                                        <td>PHP</td>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$course->course_type}}</td>
                                         <td>
                                         <a class="btn text-success mr-2"><i class="fa fa-edit"></i></a>
                                          <a  class="btn text-danger"><i class="fa fa-trash"></i></a>
                                         </td>
 
                                     </tr>
-                                     
+                                    @endforeach
                            
                         </tbody>
                     </table>

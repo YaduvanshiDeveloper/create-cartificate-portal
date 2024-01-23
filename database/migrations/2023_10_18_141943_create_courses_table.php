@@ -17,6 +17,7 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->string('course_name');
             $table->string('duration');
+            $table->integer('courseType');
             $table->string('fee');
             $table->string('image');
             $table->integer('status')->default(1);

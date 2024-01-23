@@ -321,6 +321,24 @@ return [
         // ],
         ['header' => 'Admin Settings'],
         [
+            'text'       => 'Register',
+            'icon' => 'fas fa-fw fa-id-card',
+            'icon_color'=>'blue',
+            
+            'submenu' => [
+                [
+                    'text' => 'Registeration',
+                    'icon_color' => 'cyan',
+                    'url'  => 'Manage/Registrations',
+                ],
+                [
+                    'text' => 'Register Details ',
+                    'icon_color' => 'cyan',
+                    'url'  => 'Manage/Register_Details',
+                ],
+            ],
+        ],
+        [
            
                  'text'    => 'Courses',
                 'icon'    => 'fas fa-fw fa-book',
@@ -356,7 +374,7 @@ return [
                 [
                     'text' => 'Import Students ',
                     'icon_color' => 'cyan',
-                    'url'  => 'Manage/import_student',
+                    'url'  => 'importstudent',
                 ],
     ],
 
@@ -371,11 +389,11 @@ return [
                     'icon_color' => 'cyan',
                     'url'=> 'Manage/Cartificates',
                 ],
-                [
-                    'text' => 'Import cartificates ',
-                    'icon_color' => 'cyan',
-                    'url'  => 'import',
-                ],
+                // [
+                //     'text' => 'Import cartificates ',
+                //     'icon_color' => 'cyan',
+                //     'url'  => 'import',
+                // ],
             
         ],
     ],

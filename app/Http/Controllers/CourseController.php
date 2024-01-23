@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Validator;
 use Illuminate\Http\Request;
 use App\Models\Course;
+use App\Models\CourseType;
 use log;
 use Crypt;
 
@@ -15,13 +16,15 @@ class CourseController extends Controller
         return view('Course.index',compact('courses'));
     }
     public function createCourse(){
-        return view('Course.create_course'); 
+        $courseTypes = CourseType::get();
+        return view('Course.create_course',compact('courseTypes')); 
     }
     public function store(Request $req)
     {
         $validated = Validator::make($req->all(),[
             'course_name'=>'required',
             'duration'=>'required',
+            'courseType'=>'required',
             'fee'=>'required',
             'file'=>"required|image|max:2048",
             'trainer'=>"required",
@@ -33,6 +36,7 @@ class CourseController extends Controller
         $courses = new Course;
         $courses->course_name = $req->course_name;
         $courses->duration = $req->duration;
+        $courses->courseType = $req->courseType;
         $courses->fee = $req->fee;
         $courses->trainer = $req->trainer;
         if($req->has('file')){
@@ -41,6 +45,7 @@ class CourseController extends Controller
             $courses->image = $file_name;
         }
         $courses->save();
+        
         if($courses)
         {
             return redirect('Manage/Course')->with('success','Course Addedd Successfully');
@@ -68,7 +73,8 @@ class CourseController extends Controller
     }
 
     public function Coursetype(){
-        return view('Course.course_type'); 
+        $courseTypes = CourseType::get();
+        return view('Course.course_type',compact('courseTypes')); 
     }
 
    

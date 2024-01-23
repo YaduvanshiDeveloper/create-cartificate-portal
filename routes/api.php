@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartificatesController;
+use App\Http\Controllers\api\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::post('login',[UserController::class,'login']);
+Route::post('UserRegister',[UserController::class,'store']);
+Route::get('api_data',[CartificatesController::class,'data_fathcing']); 
+Route::get('login-update',[UserController::class,'update']); 

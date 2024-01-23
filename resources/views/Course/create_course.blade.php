@@ -28,6 +28,18 @@
                     @error('duration') <span class="text-danger">{{ucwords($message)}}</span> @enderror
                 </div>
                 <div class="form-group">
+                    <label for="">Select Your CourseType: <small class="text-danger">*</small></label>
+                <select name="courseType" id="" class="form-control ">
+                        <option value="">Please Select</option>
+                        @foreach($courseTypes as $course)
+                        <option value="{{$course->id}}">{{$course->course_type}}</option>
+                        
+                        @endforeach
+                    </select>
+                    @error('courseType') <span class="text-danger">{{ucwords($message)}}</span> @enderror
+
+                  </div>
+                <div class="form-group">
                     <label for="">Course Fee: <small class="text-danger">*</small></label>
                     <input type="number" class="form-control" name="fee">
                     @error('fee') <span class="text-danger">{{ucwords($message)}}</span> @enderror

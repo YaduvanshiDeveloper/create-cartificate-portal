@@ -9,10 +9,11 @@
         
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Add Staffs</h3>
+                <h3 class="card-title">Create A New Instructor</h3>
               </div>
            
               <form action="{{route('save.staff')}}" method="post" enctype="multipart/form-data">
+                <h3 class='p-4'>Personal Details</h3>
               @csrf
                 <div class="card-body">
                   <div class="row">
@@ -28,7 +29,7 @@
                     </div>
                     <div class="form-group col-sm-6">
                     <label for="exampleInputEmail1">Phone Number: <small class="text-danger">*</small></label>
-                    <input type="number" name="phone" class="form-control" id="exampleInputEmail1" placeholder="Enter Phone number">
+                    <input type="text" name="phone" class="form-control" id="exampleInputEmail1" placeholder="Enter Phone number">
                     @error('phone') <span class="text-danger">{{ucwords($message)}}</span> @enderror
                     </div>
                     <div class="form-group col-sm-6">

@@ -5,6 +5,8 @@ use  App\Http\Controllers\CourseController;
 use  App\Http\Controllers\StaffController;
 use  App\Http\Controllers\StudentController;
 use  App\Http\Controllers\CartificatesController;
+use  App\Http\Controllers\RegistrationsController;
+
 
 
 
@@ -18,9 +20,11 @@ use  App\Http\Controllers\CartificatesController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
+Route::get('hr-login', function () {
     return view('auth.login');
+});
+Route::get('/', function () {
+    return view('Cartificates.verify');
 });
 
 Auth::routes();
@@ -45,11 +49,24 @@ Route::get('Manage/Student',[StudentController::class, 'index']);
 Route::get('Students',[StudentController::class, 'createStudent'])->name('create.student');
 Route::post('create/Student',[StudentController::class, 'saveStudent'])->name('save.student');
 Route::post('delete/Student',[StudentController::class, 'deletestudent'])->name('delete.student');
+Route::get('edit/student/{id}',[StudentController::class, 'editstudent'])->name('student.edit');
+Route::post('update/student/data',[StudentController::class,'Update'])->name('update.student');
+Route::post('Manage/Genrate',[StudentController::class, 'GenerateCertificate'])->name('ganreate.certificats'); 
+Route::post('Manage/markcourse',[StudentController::class, 'MarkCourseCompleted'])->name('course-completion'); 
+Route::get('importstudent',[StudentController::class,'importstudent']);
 
 
-Route::get('Manage/Cartificates',[CartificatesController::class, 'index']);
+Route::get('Manage/Cartificates',[CartificatesController::class, 'index']); 
 Route::get('import',[CartificatesController::class,'ImportPage']);
 Route::post('import/students',[CartificatesController::class,'import']);
+Route::get('block-certificate/{id}',[CartificatesController::class,'blockstatus']);
+Route::get('view-certificate/{id}',[CartificatesController::class,'viewCertificate']);
 
+
+
+Route::get('Manage/Registrations',[RegistrationsController::class, 'index']);
+Route::post('create/Registrations',[RegistrationsController::class, 'store'])->name('save.register');
+Route::get('Manage/Register_Details',[RegistrationsController::class, 'Details']);
 
 });
+Route::any('verify-certificate',[CartificatesController::class,'verify'])->name('verify-certificate');

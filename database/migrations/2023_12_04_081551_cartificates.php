@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCartificatesTable extends Migration
+class Cartificates extends Migration
 {
     /**
      * Run the migrations.
@@ -19,7 +19,7 @@ class CreateCartificatesTable extends Migration
                 $table->date('course_start');
                 $table->date('course_end');
                 $table->integer('course_type');
-                $table->string('course');
+                $table->integer('course');
                 $table->integer('student_id');
                 $table->date('issue_date');
                 $table->timestamps();
@@ -34,6 +34,6 @@ class CreateCartificatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cartificates');
+        //
     }
 }
